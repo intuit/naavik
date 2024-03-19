@@ -1,9 +1,11 @@
 # Naavik
 
-<!-- [![codecov](https://codecov.tools.a.intuit.com/ghe/services-mesh/meshcartographer/branch/master/graph/badge.svg)](https://codecov.tools.a.intuit.com/ghe/services-mesh/meshcartographer) 
-[![Build Status](https://build.intuit.com/devx-shared/buildStatus/buildIcon?job=services-mesh/meshcartographer/meshcartographer/master)](https://build.intuit.com/devx-shared/job/services-mesh/job/meshcartographer/job/meshcartographer/job/master/) -->
+Naavik assists in unification of configurations across services deployed with in Service Mesh. 
 
-Naavik assists in unification of configurations across API Gateway and Service Mesh. It acts upon a custom resource called TrafficConfig to apply the configurations done by the user in dev portal, and transforms them into service mesh understandable resources.
+It acts upon a custom resource called TrafficConfig and transforms them into service mesh understandable resources.
+
+When dependencies are expressed between clients and a service, Naavik can translate the configurations in 
+TrafficConfig to all the clients of the service deployed across multiple clusters over service mesh
 
 # High level Architecture Diagram
 
