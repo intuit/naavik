@@ -1,0 +1,25 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /Users/ajain43/.minikube/ca.crt
+    extensions:
+    - extension:
+        last-update: Wed, 07 Feb 2024 14:40:00 IST
+        provider: minikube.sigs.k8s.io
+        version: v1.32.0
+      name: cluster_info
+    server: https://127.0.0.1:46861
+  name: control
+contexts:
+- context:
+    cluster: control
+    user: control
+  name: control
+current-context: control
+kind: Config
+preferences: {}
+users:
+- name: control
+  user:
+    client-certificate: /Users/ajain43/.minikube/profiles/control/client.crt
+    client-key: /Users/ajain43/.minikube/profiles/control/client.key

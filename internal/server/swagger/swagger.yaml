@@ -1,0 +1,470 @@
+info:
+  contact: {}
+paths:
+  /clusters:
+    get:
+      description: Get List of Remote Clusters Naavik is aware of
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Remote Clusters
+      tags:
+      - Clusters
+  /clusters/{clusterId}/envoyfilters:
+    get:
+      description: Get List of EnvoyFilters for a given Cluster managed by Naavik
+      parameters:
+      - description: Cluster Name
+        in: path
+        name: clusterId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: List EnvoyFilters for Cluster
+      tags:
+      - Clusters
+  /clusters/{clusterId}/envoyfilters/identities/{identity}:
+    get:
+      description: Get List of EnvoyFilters for a given Cluster and Identity managed
+        by Naavik
+      parameters:
+      - description: Cluster Name
+        in: path
+        name: clusterId
+        required: true
+        type: string
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: List EnvoyFilters for Cluster and Identity
+      tags:
+      - Clusters
+  /clusters/{clusterId}/virtualservices:
+    get:
+      description: Get List of VirtualServices for a given Cluster managed by Naavik
+      parameters:
+      - description: Cluster Name
+        in: path
+        name: clusterId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: List VirtualServices for Cluster
+      tags:
+      - Clusters
+  /clusters/{clusterId}/virtualservices/identities/{identity}:
+    get:
+      description: Get List of VirtualServices for a given Cluster and Identity managed
+        by Naavik
+      parameters:
+      - description: Cluster Name
+        in: path
+        name: clusterId
+        required: true
+        type: string
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: List VirtualServices for Cluster and Identity
+      tags:
+      - Clusters
+  /clusters/identities/{identity}:
+    get:
+      description: Get List of Remote Clusters Naavik is aware of for a given
+        Identity
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Remote Clusters for Identity
+      tags:
+      - Clusters
+  /dependency/identities/{identity}:
+    get:
+      description: Get Dependency for Identity
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Dependency for Identity
+      tags:
+      - Dependency
+  /dependents/identities/{identity}:
+    get:
+      description: Get Dependents for Identity
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Dependents for Identity
+      tags:
+      - Dependency
+  /dependents/total:
+    get:
+      description: Get Total Dependencies
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Total Dependencies
+      tags:
+      - Dependency
+  /health/full:
+    get:
+      description: Health Status of Naavik
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Health Status of Naavik
+      tags:
+      - Health Check
+  /trafficonfig/identities/{identity}:
+    get:
+      description: Get Traffic Config by Identity
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Traffic Config By Identity
+      tags:
+      - Traffic Config
+  /trafficonfig/identities/{identity}/env/{env}:
+    get:
+      description: Get Traffic Config by Identity and Env
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      - description: Environment
+        in: path
+        name: env
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Traffic Config By Identity and Env
+      tags:
+      - Traffic Config
+  /trafficonfig/resources/identities/{identity}:
+    get:
+      description: Get Resources Related to Traffic Config Identity
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Resources Related to Traffic Config Identity
+      tags:
+      - Traffic Config
+  /trafficonfig/resources/identities/{identity}/dependents/{dependent}:
+    get:
+      description: Get Resources Related to Traffic Config Identity and Dependent
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      - description: Asset Alias
+        in: path
+        name: dependent
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Resources Related to Traffic Config Identity and Dependent
+      tags:
+      - Traffic Config
+  /trafficonfig/resources/identities/{identity}/dependents/{dependent}/env/{env}:
+    get:
+      description: Get Resources Related to Traffic Config Identity and Dependent
+        and Env
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      - description: Asset Alias
+        in: path
+        name: dependent
+        required: true
+        type: string
+      - description: Asset Alias
+        in: path
+        name: env
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Resources Related to Traffic Config Identity Dependent and Env
+      tags:
+      - Traffic Config
+  /workload/clusters/{cluster}/identities/{identity}:
+    get:
+      description: Get Workload by Cluster and Identity
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        type: string
+      - description: Cluster Name
+        in: path
+        name: cluster
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Workload by Cluster and Identity
+      tags:
+      - Workloads
+  /workload/clusters/{cluster}/identities/{identity}/env/{env}:
+    get:
+      description: Get Workload by Cluster, Identity and Env
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        required: true
+        type: string
+      - description: Cluster Name
+        in: path
+        name: cluster
+        required: true
+        type: string
+      - description: Env
+        in: path
+        name: env
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Workload by Cluster, Identity and Env
+      tags:
+      - Workloads
+  /workload/clusters/{cluster}/namespaces/{namespace}/services:
+    get:
+      description: Get Services by Cluster and Namespace
+      parameters:
+      - description: Cluster name
+        in: path
+        name: cluster
+        required: true
+        type: string
+      - description: Namespace name
+        in: path
+        name: namespace
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Services by Cluster and Namespace
+      tags:
+      - Workloads
+  /workload/clusters/identities/{identity}:
+    get:
+      description: Get Workload by Identity
+      parameters:
+      - description: Asset Alias
+        in: path
+        name: identity
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
+      summary: Workload By Identity
+      tags:
+      - Workloads
+swagger: "2.0"

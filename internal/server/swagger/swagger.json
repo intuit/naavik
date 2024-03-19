@@ -1,0 +1,707 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/clusters": {
+            "get": {
+                "description": "Get List of Remote Clusters Naavik is aware of",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Clusters"
+                ],
+                "summary": "Remote Clusters",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/identities/{identity}": {
+            "get": {
+                "description": "Get List of Remote Clusters Naavik is aware of for a given Identity",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Clusters"
+                ],
+                "summary": "Remote Clusters for Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/{clusterId}/envoyfilters": {
+            "get": {
+                "description": "Get List of EnvoyFilters for a given Cluster managed by Naavik",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Clusters"
+                ],
+                "summary": "List EnvoyFilters for Cluster",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster Name",
+                        "name": "clusterId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/{clusterId}/envoyfilters/identities/{identity}": {
+            "get": {
+                "description": "Get List of EnvoyFilters for a given Cluster and Identity managed by Naavik",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Clusters"
+                ],
+                "summary": "List EnvoyFilters for Cluster and Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster Name",
+                        "name": "clusterId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/{clusterId}/virtualservices": {
+            "get": {
+                "description": "Get List of VirtualServices for a given Cluster managed by Naavik",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Clusters"
+                ],
+                "summary": "List VirtualServices for Cluster",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster Name",
+                        "name": "clusterId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clusters/{clusterId}/virtualservices/identities/{identity}": {
+            "get": {
+                "description": "Get List of VirtualServices for a given Cluster and Identity managed by Naavik",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Clusters"
+                ],
+                "summary": "List VirtualServices for Cluster and Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster Name",
+                        "name": "clusterId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dependency/identities/{identity}": {
+            "get": {
+                "description": "Get Dependency for Identity",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dependency"
+                ],
+                "summary": "Dependency for Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dependents/identities/{identity}": {
+            "get": {
+                "description": "Get Dependents for Identity",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dependency"
+                ],
+                "summary": "Dependents for Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dependents/total": {
+            "get": {
+                "description": "Get Total Dependencies",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Dependency"
+                ],
+                "summary": "Total Dependencies",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/health/full": {
+            "get": {
+                "description": "Health Status of Naavik",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Health Check"
+                ],
+                "summary": "Health Status of Naavik",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/trafficonfig/identities/{identity}": {
+            "get": {
+                "description": "Get Traffic Config by Identity",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Traffic Config"
+                ],
+                "summary": "Traffic Config By Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trafficonfig/identities/{identity}/env/{env}": {
+            "get": {
+                "description": "Get Traffic Config by Identity and Env",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Traffic Config"
+                ],
+                "summary": "Traffic Config By Identity and Env",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Environment",
+                        "name": "env",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trafficonfig/resources/identities/{identity}": {
+            "get": {
+                "description": "Get Resources Related to Traffic Config Identity",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Traffic Config"
+                ],
+                "summary": "Resources Related to Traffic Config Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trafficonfig/resources/identities/{identity}/dependents/{dependent}": {
+            "get": {
+                "description": "Get Resources Related to Traffic Config Identity and Dependent",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Traffic Config"
+                ],
+                "summary": "Resources Related to Traffic Config Identity and Dependent",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "dependent",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trafficonfig/resources/identities/{identity}/dependents/{dependent}/env/{env}": {
+            "get": {
+                "description": "Get Resources Related to Traffic Config Identity and Dependent and Env",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Traffic Config"
+                ],
+                "summary": "Resources Related to Traffic Config Identity Dependent and Env",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "dependent",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "env",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/workload/clusters/identities/{identity}": {
+            "get": {
+                "description": "Get Workload by Identity",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workloads"
+                ],
+                "summary": "Workload By Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/workload/clusters/{cluster}/identities/{identity}": {
+            "get": {
+                "description": "Get Workload by Cluster and Identity",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workloads"
+                ],
+                "summary": "Workload by Cluster and Identity",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Cluster Name",
+                        "name": "cluster",
+                        "in": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/workload/clusters/{cluster}/identities/{identity}/env/{env}": {
+            "get": {
+                "description": "Get Workload by Cluster, Identity and Env",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workloads"
+                ],
+                "summary": "Workload by Cluster, Identity and Env",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Asset Alias",
+                        "name": "identity",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Cluster Name",
+                        "name": "cluster",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Env",
+                        "name": "env",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/workload/clusters/{cluster}/namespaces/{namespace}/services": {
+            "get": {
+                "description": "Get Services by Cluster and Namespace",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workloads"
+                ],
+                "summary": "Services by Cluster and Namespace",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Cluster name",
+                        "name": "cluster",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Namespace name",
+                        "name": "namespace",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

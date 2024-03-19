@@ -1,0 +1,11 @@
+FROM debian:bookworm
+
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends curl \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY ./bin/naavik /usr/local/naavik
+
+RUN chmod +x /usr/local/naavik
+
+ENTRYPOINT ["/usr/local/naavik"]

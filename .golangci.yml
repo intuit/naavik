@@ -1,0 +1,65 @@
+linters:
+  enable:
+   - lll
+   - bodyclose	# Checks whether HTTP response body is closed successfully.
+   - ginkgolinter # Enforces standards of using ginkgo and gomega.
+   - goconst # Finds repeated strings that could be replaced by a constant.
+   - gofmt # Checks whether code is gofmted.
+   - revive # Fast, configurable, extensible, flexible, and beautiful linter for Go. Drop-in replacement of golint.
+   - stylecheck # Checks whether code follows go style recommendations.
+   - prealloc # Finds slice declarations that could potentially be preallocated.
+   - perfsprint # Checks for sprint() calls in frequently executed code.
+   - goconst # Finds repeated strings that could be replaced by a constant.
+   - depguard # Checks whether dependencies are used directly or via a wrapper.
+   - goimports # Checks missing or unreferenced package imports.
+   - gocyclo # Detects functions or methods with high cyclomatic complexity.
+   - whitespace # Checks for redundant whitespaces in code.
+   - misspell # Finds commonly misspelled English words.
+   - dupword
+   - errname
+   - gosec
+   - goimports
+   - gocognit
+   - godot 
+   - importas
+
+linters-settings:
+  importas:
+    no-unaliased: true
+    # no-extra-aliases: true
+    alias:
+    - pkg: k8s.io/apimachinery/pkg/apis/meta/v1
+      alias: metav1
+    - pkg: k8s.io/api/core/v1
+      alias: corev1
+  gocognit:
+    # Minimal code complexity to report.
+    # Default: 30 (but we recommend 10-20)
+    min-complexity: 20
+  lll:
+    line-length: 290
+    tab-width: 4
+  misspell:
+    locale: US
+  depguard:
+    rules:
+      logger:
+        list-mode: lax # allowed by default unless explicitly denied
+        deny:
+        - pkg: "github.com/sirupsen/logrus"
+          desc: "logger is only allowed to be used under logger wrapper package pkg/logger"
+        - pkg: "go.uber.org/zap"
+          desc: "logger is only allowed to be used under logger wrapper package pkg/logger"
+        - pkg: "github.com/rs/zerolog"
+          desc: "logger is only allowed to be used under logger wrapper package pkg/logger"
+
+run:
+  tests: false
+  timeout: 5m
+issues:
+  # The default exclusion rules are a bit too permissive, so copying the relevant ones below
+  exclude-use-default: true
+  # Maximum issues count per one linter. Set to 0 to disable. Default is 50.
+  max-issues-per-linter: 0
+  # Maximum count of issues with the same text. Set to 0 to disable. Default is 3.
+  max-same-issues: 0

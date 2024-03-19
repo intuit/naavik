@@ -1,0 +1,68 @@
+{
+  "hosts": [
+    "e2e-air.httpbin.mesh",
+    "e2e.httpbin.intuit"
+  ],
+  "http": [
+    {
+      "name": "Health Check-e2e-air",
+      "match": [
+        {
+          "authority": { "exact": "e2e.httpbin.intuit" },
+          "headers": { "x-intuit-route-name": { "exact": "Health Check" } }
+        }
+      ],
+      "route": [
+        { "destination": { "host": "e2e-air.httpbin.mesh" } }
+      ]
+    },
+    {
+      "name": "v1-e2e-air",
+      "match": [
+        {
+          "authority": { "exact": "e2e.httpbin.intuit" },
+          "headers": { "x-intuit-route-name": { "exact": "v1" } }
+        }
+      ],
+      "route": [
+        { "destination": { "host": "e2e-air.httpbin.mesh" } }
+      ]
+    },
+    {
+      "name": "v2-e2e-air",
+      "match": [
+        {
+          "authority": { "exact": "e2e.httpbin.intuit" },
+          "headers": { "x-intuit-route-name": { "exact": "v2" } }
+        }
+      ],
+      "route": [
+        { "destination": { "host": "e2e-air.httpbin.mesh" } }
+      ]
+    },
+    {
+      "name": "defaultall-e2e-air-mesh",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "e2e-air.httpbin.mesh" }
+        }
+      ],
+      "route": [
+        { "destination": { "host": "e2e-air.httpbin.mesh" } }
+      ]
+    },
+    {
+      "name": "defaultall-e2e-air",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "e2e.httpbin.intuit" }
+        }
+      ],
+      "route": [
+        { "destination": { "host": "e2e-air.httpbin.mesh" } }
+      ]
+    }
+  ]
+}

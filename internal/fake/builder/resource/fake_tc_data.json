@@ -1,0 +1,103 @@
+{
+  "apiVersion": "admiral.io/v1",
+  "kind": "TrafficConfig",
+  "metadata": {
+    "annotations": {
+      "revisionNumber": "1",
+      "transactionID": "1-655ef4b2-7a1b3d8e1746c2e1250fd3af"
+    },
+    "labels": {
+      "asset": "assetAlias",
+      "env": "env"
+    },
+    "name": "assetAlias-env",
+    "namespace": "trafficConfigNamespace"
+  },
+  "spec": {
+    "edgeService": {
+      "filters": [
+        {
+          "name": "fake-filter"
+        }
+      ],
+      "routes": [
+        {
+          "config": [
+            {
+              "targetGroupSelector": "Default",
+              "targetSelector": "dev-target"
+            }
+          ],
+          "filterSelector": "fake-filter",
+          "inbound": "/health/full",
+          "name": "Health Check",
+          "outbound": "/health/full",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "env"
+          ]
+        },
+        {
+          "config": [
+            {
+              "targetGroupSelector": "Default",
+              "targetSelector": "dev-target"
+            }
+          ],
+          "filterSelector": "filter-17356028",
+          "inbound": "/*",
+          "name": "v1",
+          "outbound": "/*",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "env"
+          ]
+        }
+      ],
+      "targetGroups": [
+        {
+          "name": "DefaultGroup",
+          "weights": [
+            {
+              "name": "Default",
+              "weight": 100
+            }
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "meshDNS": "meshDns",
+          "name": "dev-target",
+          "port": 443,
+          "socketTimeout": 5000
+        }
+      ]
+    },
+    "quotaGroup": {
+      "totalQuotaGroups": [
+        {
+          "description": "Total capacity of service",
+          "name": "Total Throttling Plan",
+          "workloadEnvSelectors": [
+            "env"
+          ],
+          "quotas": [
+            {
+              "algorithm": "scalable",
+              "behaviour": "softThrottle",
+              "keyType": "appIdOrToken",
+              "maxAmount": 100,
+              "name": "Total",
+              "rule": "/*",
+              "timePeriod": "1s"
+            }
+          ]
+        }
+      ]
+    },
+    "workloadEnvs": [
+      "env"
+    ]
+  }
+}
