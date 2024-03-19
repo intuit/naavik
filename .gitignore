@@ -1,0 +1,9 @@
+*coverage*
+__debug*
+*.test
+perf_output.log
+.DS_Store
+logback.log
+ginkgo.report
+istio-*
+*.kubeconfig

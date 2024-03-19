@@ -1,0 +1,230 @@
+{
+  "hosts": [
+    "prd-air.httpbin.mesh",
+    "prd.httpbin.intuit",
+    "prd.httpbin.mesh",
+    "stg.httpbin.mesh",
+    "stg.httpbin.intuit",
+    "stg-air.httpbin.mesh"
+  ],
+  "http": [
+    {
+      "match": [
+        {
+          "authority": {
+            "exact": "prd.httpbin.intuit"
+          },
+          "headers": {
+            "x-intuit-route-name": {
+              "exact": "all-prd"
+            }
+          }
+        }
+      ],
+      "name": "all-prd-prd-air",
+      "route": [
+        {
+          "destination": {
+            "host": "prd-air.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "15.346s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "exact": "prd.httpbin.mesh"
+          },
+          "headers": {
+            "x-intuit-route-name": {
+              "exact": "all-prd"
+            }
+          }
+        }
+      ],
+      "name": "all-prd-prd",
+      "route": [
+        {
+          "destination": {
+            "host": "prd.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "15.346s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "exact": "stg.httpbin.intuit"
+          },
+          "headers": {
+            "x-intuit-route-name": {
+              "exact": "all-stg"
+            }
+          }
+        }
+      ],
+      "name": "all-stg-stg-air",
+      "route": [
+        {
+          "destination": {
+            "host": "stg-air.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "exact": "stg.httpbin.mesh"
+          },
+          "headers": {
+            "x-intuit-route-name": {
+              "exact": "all-stg"
+            }
+          }
+        }
+      ],
+      "name": "all-stg-stg",
+      "route": [
+        {
+          "destination": {
+            "host": "stg.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "prefix": "prd-air.httpbin.mesh"
+          },
+          "uri": {
+            "prefix": "/"
+          }
+        }
+      ],
+      "name": "defaultall-prd-air-mesh",
+      "route": [
+        {
+          "destination": {
+            "host": "prd-air.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "prefix": "prd.httpbin.intuit"
+          },
+          "uri": {
+            "prefix": "/"
+          }
+        }
+      ],
+      "name": "defaultall-prd-air",
+      "route": [
+        {
+          "destination": {
+            "host": "prd-air.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "prefix": "prd.httpbin.mesh"
+          },
+          "uri": {
+            "prefix": "/"
+          }
+        }
+      ],
+      "name": "defaultall-prd",
+      "route": [
+        {
+          "destination": {
+            "host": "prd.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "prefix": "stg.httpbin.mesh"
+          },
+          "uri": {
+            "prefix": "/"
+          }
+        }
+      ],
+      "name": "defaultall-stg",
+      "route": [
+        {
+          "destination": {
+            "host": "stg.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "prefix": "stg-air.httpbin.mesh"
+          },
+          "uri": {
+            "prefix": "/"
+          }
+        }
+      ],
+      "name": "defaultall-stg-air-mesh",
+      "route": [
+        {
+          "destination": {
+            "host": "stg-air.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    },
+    {
+      "match": [
+        {
+          "authority": {
+            "prefix": "stg.httpbin.intuit"
+          },
+          "uri": {
+            "prefix": "/"
+          }
+        }
+      ],
+      "name": "defaultall-stg-air",
+      "route": [
+        {
+          "destination": {
+            "host": "stg-air.httpbin.mesh"
+          }
+        }
+      ],
+      "timeout": "16.712s"
+    }
+  ]
+}

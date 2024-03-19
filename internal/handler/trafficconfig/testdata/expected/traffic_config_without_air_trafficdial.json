@@ -1,0 +1,99 @@
+{
+  "hosts": [
+    "e2e.httpbin.mesh",
+    "e2e-1.httpbin.mesh",
+    "qal.httpbin.mesh"
+  ],
+  "http": [
+    {
+      "name": "v1-e2e",
+      "match": [
+        {
+          "authority": { "exact": "e2e.httpbin.mesh" },
+          "headers": { "x-intuit-route-name": { "exact": "v1" } }
+        }
+      ],
+      "route": [{ "destination": { "host": "e2e.httpbin.mesh" } }]
+    },
+    {
+      "name": "v1-e2e-1",
+      "match": [
+        {
+          "authority": { "exact": "e2e-1.httpbin.mesh" },
+          "headers": { "x-intuit-route-name": { "exact": "v1" } }
+        }
+      ],
+      "route": [{ "destination": { "host": "e2e-1.httpbin.mesh" } }]
+    },
+    {
+      "name": "v1-qal",
+      "match": [
+        {
+          "authority": { "exact": "qal.httpbin.mesh" },
+          "headers": { "x-intuit-route-name": { "exact": "v1" } }
+        }
+      ],
+      "route": [{ "destination": { "host": "qal.httpbin.mesh" } }]
+    },
+    {
+      "name": "Health Check-e2e",
+      "match": [
+        {
+          "authority": { "exact": "e2e.httpbin.mesh" },
+          "headers": { "x-intuit-route-name": { "exact": "Health Check" } }
+        }
+      ],
+      "route": [{ "destination": { "host": "e2e.httpbin.mesh" } }]
+    },
+    {
+      "name": "Health Check-e2e-1",
+      "match": [
+        {
+          "authority": { "exact": "e2e-1.httpbin.mesh" },
+          "headers": { "x-intuit-route-name": { "exact": "Health Check" } }
+        }
+      ],
+      "route": [{ "destination": { "host": "e2e-1.httpbin.mesh" } }]
+    },
+    {
+      "name": "Health Check-qal",
+      "match": [
+        {
+          "authority": { "exact": "qal.httpbin.mesh" },
+          "headers": { "x-intuit-route-name": { "exact": "Health Check" } }
+        }
+      ],
+      "route": [{ "destination": { "host": "qal.httpbin.mesh" } }]
+    },
+    {
+      "name": "defaultall-e2e",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "e2e.httpbin.mesh" }
+        }
+      ],
+      "route": [{ "destination": { "host": "e2e.httpbin.mesh" } }]
+    },
+    {
+      "name": "defaultall-e2e-1",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "e2e-1.httpbin.mesh" }
+        }
+      ],
+      "route": [{ "destination": { "host": "e2e-1.httpbin.mesh" } }]
+    },
+    {
+      "name": "defaultall-qal",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "qal.httpbin.mesh" }
+        }
+      ],
+      "route": [{ "destination": { "host": "qal.httpbin.mesh" } }]
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+    "apiVersion": "admiral.io/v1",
+    "kind": "TrafficConfig",
+    "metadata": {
+      "labels": {
+        "asset": "httpbin",
+        "env": "qa"
+      },
+      "name": "httpbin",
+      "namespace": "admiral"
+    },
+    "spec": {
+      "edgeService": {
+        "filters": [
+          {
+            "name": "do-not-delete-filter-used-by-bdds"
+          },
+          {
+            "name": "filter-17356028"
+          },
+          {
+            "name": "filter-3387192"
+          }
+        ],
+        "routes": [
+          {
+            "config": [
+              {
+                "targetGroupSelector": "express-339",
+                "targetSelector": "expressStack"
+              },
+              {
+                "targetGroupSelector": "custom-339",
+                "targetSelector": "customStack"
+              }
+            ],
+            "filterSelector": "do-not-delete-filter-used-by-bdds",
+            "inbound": "/some",
+            "name": "e2e-traffic-dialing-route",
+            "outbound": "/outbound",
+            "timeout": 5000,
+            "workloadEnvSelectors": [
+              "e2e"
+            ]
+          },
+          {
+            "config": [
+              {
+                "targetGroupSelector": "Default",
+                "targetSelector": "qal--2037428113"
+              }
+            ],
+            "filterSelector": "filter-17356028",
+            "inbound": "/*",
+            "name": "v1",
+            "outbound": "/*",
+            "timeout": 5000,
+            "workloadEnvSelectors": [
+              "e2e",
+              "e2e-1",
+              "e2e-2"
+            ]
+          },
+          {
+            "config": [
+              {
+                "targetGroupSelector": "express-338",
+                "targetSelector": "expressStack"
+              },
+              {
+                "targetGroupSelector": "custom-338",
+                "targetSelector": "customStack"
+              }
+            ],
+            "filterSelector": "do-not-delete-filter-used-by-bdds",
+            "inbound": "/some",
+            "name": "e2e-1-traffic-dialing-route",
+            "outbound": "/outbound",
+            "timeout": 5000,
+            "workloadEnvSelectors": [
+              "e2e",
+              "e2e-1"
+            ]
+          },
+          {
+            "filterSelector": "filter-3387192",
+            "inbound": "/health/full",
+            "name": "Health Check",
+            "outbound": "/health/full",
+            "timeout": 5000,
+            "workloadEnvSelectors": [
+              "e2e",
+              "e2e-1",
+              "e2e-2"
+            ]
+          }
+        ],
+        "targetGroups": [
+          {
+            "name": "Default - Single Swimlane",
+            "weights": [
+              {
+                "name": "Default - All Traffic",
+                "weight": 100
+              }
+            ]
+          },
+          {
+            "name": "CustomExpressGroup-340",
+            "weights": [
+              {
+                "name": "custom-340",
+                "weight": 80
+              },
+              {
+                "name": "express-340",
+                "weight": 20
+              }
+            ]
+          },
+          {
+            "name": "CustomExpressGroup-339",
+            "weights": [
+              {
+                "name": "custom-339",
+                "weight": 80
+              },
+              {
+                "name": "express-339",
+                "weight": 20
+              }
+            ]
+          },
+          {
+            "name": "DefaultGroup",
+            "weights": [
+              {
+                "name": "Default",
+                "weight": 100
+              }
+            ]
+          },
+          {
+            "name": "CustomExpressGroup-334",
+            "weights": [
+              {
+                "name": "custom-334",
+                "weight": 85
+              },
+              {
+                "name": "express-334",
+                "weight": 15
+              }
+            ]
+          },
+          {
+            "name": "CustomExpressGroup-338",
+            "weights": [
+              {
+                "name": "custom-338",
+                "weight": 80
+              },
+              {
+                "name": "express-338",
+                "weight": 20
+              }
+            ]
+          }
+        ],
+        "targets": [
+          {
+            "meshDNS": "e2e-express.httpbin.mesh",
+            "name": "expressStack",
+            "port": 443,
+            "socketTimeout": 5000
+          },
+          {
+            "meshDNS": "sample.endpoint.mesh",
+            "name": "do-not-delete-target-used-by-bdds",
+            "port": 443,
+            "socketTimeout": 5000
+          },
+          {
+            "meshDNS": "e2e.httpbin.mesh",
+            "name": "customStack",
+            "port": 443,
+            "socketTimeout": 5000
+          },
+          {
+            "meshDNS": "sample.endpoint.mesh",
+            "name": "qal--2037428113",
+            "port": 443,
+            "socketTimeout": 5000
+          }
+        ]
+      },
+      "quotaGroup": {
+        "appQuotaGroups": [
+          {
+            "description": "Total capacity of service",
+            "name": "Total Throttling Plan",
+            "quotas": [
+              {
+                "algorithm": "scalable",
+                "behaviour": "softThrottle",
+                "keyType": "appIdOrToken",
+                "maxAmount": 110,
+                "name": "Total",
+                "rule": "/*",
+                "timePeriod": "1s"
+              }
+            ]
+          }
+        ]
+      },
+      "workloadEnvs": [
+        "e2e",
+        "e2e-1",
+        "e2e-2"
+      ]
+    }
+  }

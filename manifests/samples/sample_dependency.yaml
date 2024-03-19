@@ -1,0 +1,10 @@
+apiVersion: admiral.io/v1
+kind: Dependency
+metadata:
+  name: busybox
+  namespace: admiral
+spec:
+  destinations:
+  - httpbin
+  identityLabel: alpha.istio.io/identity
+  source: busybox

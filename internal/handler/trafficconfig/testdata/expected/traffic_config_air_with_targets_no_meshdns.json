@@ -1,0 +1,70 @@
+{
+  "hosts": [
+    "e2e.httpbin.mesh",
+    "e2e.httpbin.intuit",
+    "e2e-air.httpbin.mesh"
+  ],
+  "http": [
+    {
+      "name": "Health Check",
+      "match": [
+        { "headers": { "x-intuit-route-name": { "exact": "Health Check" } } }
+      ],
+      "route": [
+        {
+          "destination": { "host": "e2e.httpbin.mesh" },
+          "weight": 100
+        }
+      ],
+      "timeout": "5s"
+    },
+    {
+      "name": "v1",
+      "match": [{ "headers": { "x-intuit-route-name": { "exact": "v1" } } }],
+      "route": [
+        {
+          "destination": { "host": "e2e.httpbin.mesh" },
+          "weight": 100
+        }
+      ],
+      "timeout": "5s"
+    },
+    {
+      "name": "defaultall-e2e",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "e2e.httpbin.mesh" }
+        }
+      ],
+      "route": [{ "destination": { "host": "e2e.httpbin.mesh" } }],
+      "timeout": "5s"
+    },
+    {
+      "name": "defaultall-e2e-air-mesh",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "e2e-air.httpbin.mesh" }
+        }
+      ],
+      "route": [
+        { "destination": { "host": "e2e-air.httpbin.mesh" } }
+      ],
+      "timeout": "5s"
+    },
+    {
+      "name": "defaultall-e2e-air",
+      "match": [
+        {
+          "uri": { "prefix": "/" },
+          "authority": { "prefix": "e2e.httpbin.intuit" }
+        }
+      ],
+      "route": [
+        { "destination": { "host": "e2e-air.httpbin.mesh" } }
+      ],
+      "timeout": "5s"
+    }
+  ]
+}

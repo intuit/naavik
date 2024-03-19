@@ -1,0 +1,158 @@
+{
+  "apiVersion": "admiral.io/v1",
+  "kind": "TrafficConfig",
+  "metadata": {
+    "labels": {
+      "asset": "httpbin",
+      "env": "qa"
+    },
+    "name": "httpbin",
+    "namespace": "admiral"
+  },
+  "spec": {
+    "edgeService": {
+      "filters": [
+        {
+          "name": "filter-3387192"
+        },
+        {
+          "name": "filter--671448791"
+        }
+      ],
+      "routes": [
+        {
+          "config": [
+            {
+              "targetGroupSelector": "custom-1",
+              "targetSelector": "qal-2103103791"
+            },
+            {
+              "targetGroupSelector": "AIR-1",
+              "targetSelector": "airTarget"
+            }
+          ],
+          "filterSelector": "filter--671448791",
+          "inbound": "/*",
+          "name": "all",
+          "outbound": "/*",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "qal-air",
+            "qal"
+          ]
+        },
+        {
+          "config": [
+            {
+              "targetSelector": "airTarget"
+            }
+          ],
+          "filterSelector": "filter-3387192",
+          "inbound": "/*",
+          "name": "testRouteToAccessAirStack",
+          "outbound": "/*",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "qal-air",
+            "qal"
+          ]
+        },
+        {
+          "config": [
+            {
+              "targetGroupSelector": "custom-1",
+              "targetSelector": "qal-2103103791"
+            },
+            {
+              "targetGroupSelector": "AIR-1",
+              "targetSelector": "airTarget"
+            }
+          ],
+          "filterSelector": "filter-3387192",
+          "inbound": "/health/full",
+          "name": "Health Check",
+          "outbound": "/health/full",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "qal-air",
+            "qal"
+          ]
+        }
+      ],
+      "targetGroups": [
+        {
+          "name": "Default - Single Swimlane",
+          "weights": [
+            {
+              "name": "Default - All Traffic",
+              "weight": 100
+            }
+          ]
+        },
+        {
+          "name": "custom-air",
+          "weights": [
+            {
+              "name": "AIR-1",
+              "weight": 90
+            },
+            {
+              "name": "custom-1",
+              "weight": 10
+            }
+          ]
+        },
+        {
+          "name": "DefaultGroup",
+          "weights": [
+            {
+              "name": "Default",
+              "weight": 100
+            }
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "name": "qal-2103103791",
+          "port": 80,
+          "socketTimeout": 5000
+        },
+        {
+          "meshDNS": "qal-air.httpbin.mesh",
+          "name": "airTarget",
+          "port": 80,
+          "socketTimeout": 5000
+        }
+      ]
+    },
+    "quotaGroup": {
+      "totalQuotaGroups": [
+        {
+          "description": "Total capacity of service",
+          "name": "Total Throttling Plan",
+          "quotas": [
+            {
+              "algorithm": "scalable",
+              "behaviour": "softThrottle",
+              "keyType": "any",
+              "maxAmount": 200,
+              "name": "Total",
+              "rule": "/*",
+              "timePeriod": "1s"
+            }
+          ],
+          "regionLevelLimit": true,
+          "workloadEnvSelectors": [
+            "qal-air",
+            "qal"
+          ]
+        }
+      ]
+    },
+    "workloadEnvs": [
+      "qal-air",
+      "qal"
+    ]
+  }
+}

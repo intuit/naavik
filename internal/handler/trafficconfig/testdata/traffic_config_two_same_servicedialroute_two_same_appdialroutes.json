@@ -1,0 +1,251 @@
+{
+  "apiVersion": "admiral.io/v1",
+  "kind": "TrafficConfig",
+  "metadata": {
+    "labels": {
+      "asset": "httpbin",
+      "env": "qa"
+    },
+    "name": "httpbin",
+    "namespace": "admiral"
+  },
+  "spec": {
+    "edgeService": {
+      "filters": [
+        {
+          "name": "filter-3387192"
+        },
+        {
+          "name": "filter--671448791"
+        }
+      ],
+      "routes": [
+        {
+          "config": [
+            {
+              "targetGroupSelector": "sw4",
+              "targetSelector": "swc"
+            },
+            {
+              "targetGroupSelector": "sw5",
+              "targetSelector": "swc"
+            }
+          ],
+          "filterSelector": "filter--671448791",
+          "inbound": "/v1/*",
+          "name": "v1",
+          "outbound": "/*",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "e2e",
+            "e2e-air"
+          ]
+        },
+        {
+          "config": [
+            {
+              "targetGroupSelector": "sw4",
+              "targetSelector": "swb"
+            },
+            {
+              "targetGroupSelector": "sw5",
+              "targetSelector": "swb"
+            }
+          ],
+          "filterSelector": "filter--671448791",
+          "inbound": "/*",
+          "name": "all",
+          "outbound": "/*",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "e2e",
+            "e2e-air"
+          ]
+        },
+        {
+          "config": [
+            {
+              "targetGroupSelector": "sw8",
+              "targetSelector": "swb"
+            },
+            {
+              "targetGroupSelector": "sw9",
+              "targetSelector": "swb"
+            }
+          ],
+          "filterSelector": "filter--671448791",
+          "inbound": "/*",
+          "name": "v2",
+          "outbound": "/*",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "e2e",
+            "e2e-air"
+          ]
+        },
+        {
+          "config": [
+            {
+              "targetGroupSelector": "sw8",
+              "targetSelector": "swb"
+            },
+            {
+              "targetGroupSelector": "sw9",
+              "targetSelector": "swb"
+            }
+          ],
+          "filterSelector": "filter--671448791",
+          "inbound": "/*",
+          "name": "v3",
+          "outbound": "/*",
+          "timeout": 5000,
+          "workloadEnvSelectors": [
+            "e2e",
+            "e2e-air"
+          ]
+        }
+      ],
+      "targetGroups": [
+        {
+          "name": "app-group-1",
+          "weights": [
+            {
+              "name": "default-app-group-2",
+              "weight": 100
+            }
+          ],
+          "appOverrides": [
+            {
+              "assetAlias": "httpbin",
+              "assetID": "2093065520108338843",
+              "weights": [
+                {
+                  "name": "sw6",
+                  "weight": 10
+                },
+                {
+                  "name": "sw7",
+                  "weight": 90
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "app-group-2",
+          "weights": [
+            {
+              "name": "default-app-group-2",
+              "weight": 100
+            }
+          ],
+          "appOverrides": [
+            {
+              "assetAlias": "httpbin",
+              "assetID": "5047426875663384589",
+              "weights": [
+                {
+                  "name": "sw4",
+                  "weight": 60
+                },
+                {
+                  "name": "sw5",
+                  "weight": 40
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "another-two-weights",
+          "weights": [
+            {
+              "name": "sw8",
+              "weight": 50
+            },
+            {
+              "name": "sw9",
+              "weight": 50
+            }
+          ]
+        },
+        {
+          "name": "two-weights",
+          "weights": [
+            {
+              "name": "sw10",
+              "weight": 25
+            },
+            {
+              "name": "sw11",
+              "weight": 75
+            }
+          ]
+        }
+      ],
+      "targets": [
+        {
+          "meshDNS": "e2e-air.httpbin.mesh",
+          "name": "e2e-540681375",
+          "port": 80,
+          "socketTimeout": 5000
+        },
+        {
+          "meshDNS": "e2e-air.httpbin.mesh",
+          "name": "swc",
+          "port": 80,
+          "socketTimeout": 5000
+        },
+        {
+          "meshDNS": "qal.httpbineast.mesh",
+          "name": "swe",
+          "port": 80,
+          "socketTimeout": 5000
+        },
+        {
+          "meshDNS": "e2e-air.httpbin.mesh",
+          "name": "swb",
+          "port": 80,
+          "socketTimeout": 5000
+        },
+        {
+          "meshDNS": "qal.httpbin.mesh",
+          "name": "swd",
+          "port": 80,
+          "socketTimeout": 5000
+        }
+      ]
+    },
+    "quotaGroup": {
+      "totalQuotaGroups": [
+        {
+          "cpuLimit": 80,
+          "description": "Total capacity of service",
+          "memoryLimit": 80,
+          "name": "Total Throttling Plan",
+          "podLevelThreshold": 100,
+          "quotas": [
+            {
+              "algorithm": "scalable",
+              "behaviour": "softThrottle",
+              "keyType": "any",
+              "maxAmount": 2001,
+              "name": "Total",
+              "rule": "/*",
+              "timePeriod": "1s"
+            }
+          ],
+          "regionLevelLimit": true,
+          "workloadEnvSelectors": [
+            "e2e",
+            "e2e-air"
+          ]
+        }
+      ]
+    },
+    "workloadEnvs": [
+      "e2e",
+      "e2e-air"
+    ]
+  }
+}
