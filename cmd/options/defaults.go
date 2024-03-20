@@ -27,7 +27,7 @@ const (
 	DefaultStateChecker               = types.StateCheckerNone
 	DefaultTrafficConfigNamespace     = "admiral"
 	DefaultTrafficConfigIdentityKey   = "asset"
-	DefaultRefreshInterval            = time.Second
+	DefaultRefreshInterval            = time.Minute
 	DefaultAsyncExecutorMaxGoRoutines = 20000
 	DefaultWorkerConcurrency          = 1
 )

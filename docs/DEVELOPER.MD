@@ -25,13 +25,13 @@ The steps will start minikube cluster, installs the istio, creates required CRDs
 If the cluster is already running with Istio and required CRDs, you can go through the below steps to run the Naavik.
 * Ensure you have the requirements installed [(see above)](#requirements)
 * Ensure setup is complete [(see above)](#setup-mac)
-* Run `go run cmd/naavik/main.go --kube_config=<path-to-kubeconfig> --log_level=trace --log_color=true`
+* Run `go run ./main.go --kube_config=<path-to-kubeconfig> --log_level=trace --log_color=true`
 * Check [supported arguments](#supported-cmd-arguments) for more details.
 
 ### Run with IDE
 * Ensure you have the requirements installed [(see above)](#requirements)
 * Ensure setup is complete [(see above)](#setup-mac)
-* Open the project in your IDE and run `cmd/naavik/main.go` with the below arguments
+* Open the project in your IDE and run `./main.go` with the below arguments
     * `--kube_config=<path-to-kubeconfig>`
     * `--log_level=trace`
     * `--log_color=true`
@@ -39,7 +39,7 @@ If the cluster is already running with Istio and required CRDs, you can go throu
 
 ### Supported cmd arguments
 Usage:
- `go run cmd/naavik/main.go [flags]`
+ `go run ./main.go [flags]`
 ```
 Flags:
       --argo_rollouts                                  Use argo rollout configurations. Defaults to true (default true)

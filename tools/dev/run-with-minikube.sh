@@ -42,4 +42,4 @@ do
 done
 
 # Start naavik
-go run ./cmd/naavik/main.go --log_level trace --log_color=true --kube_config=$(pwd)/${CLUSTER_NAME} --config_resolver=secret --state_checker=none --config_path ./config/config.yaml --sync_period 60s
+go run ./main.go --log_level trace --log_color=true --kube_config=$(pwd)/${CLUSTER_NAME} --config_resolver=secret --state_checker=none --config_path ./config/config.yaml --sync_period 60s

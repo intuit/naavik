@@ -1,7 +1,7 @@
 OUT?=./bin
 BINARY_NAME?=$(OUT)/naavik
 WORKING_DIR=$(shell pwd)
-MAIN_PATH_NAAVIK=./cmd/naavik/main.go
+MAIN_PATH_NAAVIK=./main.go
 
 # Image Build Args
 DOCKER_REPO?=admiralproj
