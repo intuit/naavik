@@ -17,7 +17,6 @@ import (
 	k8s_utils "github.com/intuit/naavik/internal/utils/k8s"
 	"github.com/intuit/naavik/pkg/logger"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/rest"
 	"k8s.io/klog/v2"
 )
@@ -26,17 +25,7 @@ var configLoader = k8s_utils.NewConfigLoader()
 
 func StartControllers(ctx context.Context) {
 	klog.SetLogFilter(newKlogFilter())
-	// Derived from utilruntime.HandleError but with a custom logger
-	utilruntime.ErrorHandlers = []func(error){
-		ctx.Log.HandleError,
-		(&rudimentaryErrorBackoff{
-			lastErrorTime: time.Now(),
-			// 1ms was the number folks were able to stomach as a global rate limit.
-			// If you need to log errors more than 1000 times a second you
-			// should probably consider fixing your code instead. :)
-			minPeriod: time.Millisecond,
-		}).OnError,
-	}
+
 	// Get the k8s client config of the cluster where remote cluster dependency, traffic config and remote cluster secrets are stored
 	k8sConfig, err := configLoader.GetConfigFromPath(options.GetKubeConfigPath())
 	if err != nil {
